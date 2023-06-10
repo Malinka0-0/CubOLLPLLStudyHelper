@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,26 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CubHelper
 {
     public partial class Study : Form
     {
+
         public Study()
         {
             InitializeComponent();
+            string[] options = { "Option 1", "Option 2", "Option 3" };
+            comboBox1.Items.AddRange(options);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Study_Load(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int randomNumber = random.Next(1, 55); // Генеруємо випадкове число від 1 до 54
-
-            string imagePath = $"D:\\Project\\Programing\\cub\\oll\\{randomNumber}.png"; // Складаємо шлях до випадкового зображення
-
-            pictureBox1.Image = Image.FromFile(imagePath); // Встановлюємо зображення в PictureBox
-
-
+            Formulas formulas = new Formulas();
+            pictureBox1.Image = Image.FromFile($"D:\\Project\\Programing\\cub\\oll\\1.png"); // Встановлюємо зображення в PictureBox
+            label1.Text = formulas.OLL[0];
         }
+       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Formulas formulas = new Formulas();
+
+            pictureBox1.Image = Image.FromFile($"D:\\Project\\Programing\\cub\\oll\\{comboBox1.SelectedIndex + 1}.png"); // Встановлюємо зображення в PictureBox
+            label1.Text = formulas.OLL[comboBox1.SelectedIndex];
+        }
+
+
+
     }
 }
