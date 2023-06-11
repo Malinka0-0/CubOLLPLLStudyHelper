@@ -7,7 +7,7 @@ namespace CubHelper
         {
             InitializeComponent();
         }
-        
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             Test test = new Test();
@@ -28,64 +28,114 @@ namespace CubHelper
             study.Show();
             this.Hide();
         }
+
+      
     }
-    
+
 }
 public class Formulas
 {
-    public static string[] OLL = {
-        "R U R' R U2' R'" /*Рибка 1 */,
-        "R U2' R' U' R U' R'" /*Рибка 2 */,
-        "R U2' R2' U' R2 U2' R' U2 R" /*Гвинтокрил */,
-        "R U R2 U' R' F R U R U' F' " /*Cкобки 1*/,
-        "y R' U' R' F R F' U R" /*Скобки 2 */, 
-        "Rw U R' U' Rw' F R F'" /*Вуха*/,
-        "R' F R U R' U' F'U R " /*Пропейлер 1*/,
-        "y2 R U R' F' U' F U R U2 R'" /*Пропейлер 2*/,
-        "Rw U R' U' Rw' R U R U' R'" /*Повітряний змій*/,
-        "Rw' R U R U R' U' Rw R' M' U R U' Rw'" /*Сніжинка*/,
-        "F R U R' U' F'" /*Буква Т 1*/,
-        "R U R' U' R' F R F'" /*Буква Т 2*/,
-        "R U2' R2' F R F' U2' R' F R F'" /*Крапка 1*/,
-        "Rw' U' Rw U2' R' U2' R U2' Rw' U Rw" /*Крапка 2*/,
-        "R U R' U R' F R F' U2' R' F R F'" /*Диагональ*/,
-        "Rw' R2 U R' U Rw U2' Rw' U R' Rw" /*Кома 1*/,
-        "Rw' R U' Rw U2 Rw' U' R U' R2 Rw" /*Кома 2*/,
-        "R2 D R' U2' R D' R' U2' R'" /*Очі*/,
-        "Rw' R U R U R' U' Rw R2 F R F'" /*Мікі Маус 1*/,
-        "Rw U R' U R U2 Rw2 U' R U' R' U2 Rw" /*Мікі Маус 2*/,
-        "R U2 R' U' R U R' U' R U' R'" /*Подвійні очі*/,
-        "F U R U' R' U R U' R' F'" /*Палиця 1*/,
-        "R' F R U R U' R2 F' R2 U' R' U R U R'" /*Палиця 2*/,
-        "Rw' U' Rw U' R' U R U' R' U R Rw' U Rw" /*Палиця 3*/,
-        "y' R' F' U' F U' R U R' U R" /*Палиця 4*/,
-        "F' Rw U R' U' Rw' F R " /*Вісьмірка*/,
-        "R U R' U' M'U R U' Rw'" /*Буква Н*/,
-        "Rw U Rw' R U R' U' Rw U'" /*Буква Г 1*/,
-        "y2 F U R U' R2 F' R U R U' R'" /*Буква Г 2*/,
-        "y2 Rw' U' Rw R' U' R U Rw' U Rw" /*Буква Г 3*/,
-        "Rw' U Rw U Rw' U' Rw B U' B'" /*Буква Г 4*/,
-        "Rw U2 R' U' R U' Rw'" /*Квадрат 1*/,
-        "y2 Rw' U2 R U R' U Rw" /*Квадрат 2*/,
-        "y2 R U2' R2 F R F' R U2' R'" /*Краватка 1*/,
-        "F R U' R' U' R U R' F'" /*Краватка 2*/,
-        "R U R' U R U' R'U' R' F R F'" /*Буква М 1*/,
-        "L' U' L U' L'U L U Rw U' Rw' F" /*Буква M 2*/,
-        "R U R' U' R' F R2 U R' U' F" /*Рюмка 1*/,
-        "y2 R U R' U R' F R F' R U2' R'" /*Рюмка 2*/,
-        "Rw U R'U R U2 Rw'" /*Близкавка 1*/,
-        "R U2 R' U2 R'F R F'" /*Близкавка 2*/,
-        "y R' U' F' U F R" /*М'який знак 1 */,
-        "y2 R'U' F U R U' R' F' R" /*М'який знак 2*/,
-        "y2 F U R U' R' F'" /*М'який знак 3*/,
-        "R U B' U' R' U R B R'" /*М'який знак 4*/,
-        "y2 R U R' U R U2 R' F R U R' U' F'" /*Півень 1*/,
-        "y2 F R' F R2 U' R' U' R U R' F2" /*Півень 2*/,
-        "R' U' R U'R' U2 R F R U R' U' F'" /*Півень 3*/,
-        "y R U R' U' R U' R' F' U' F R U R'" /*Півень 4*/,
-        "F R U R' U' R U R' U' F'" /*Під сходинки 1 */,
-        "Rw U' Rw2 U Rw2 U Rw2 U' Rw" /*Під сходинки 2*/,
-        "y Rw' U Rw2 U' Rw2 U' Rw2 U Rw'" /*Під сходинки 3*/,
-        "F' L' U' L U L' U'L U F" /*Під сходинки 4*/
+    public string[] Spliter(string input)
+    {
+        string[] names = new string[OLL.Length];
+        string[] form = new string[OLL.Length];
+        for (int i = 0; i < OLL.Length; i++)
+        {
+            string[] parts = OLL[i].Split('|');
+            names[i] = parts[0].Trim();
+            form[i] = parts[1].Trim();
+        }
+
+        if (input == "names")
+        {
+            return names;
+        }
+        else
+        {
+            return form;
+        }
+    }
+
+    public object[] Spliter(string input , string input2)
+    {
+        string[] names = new string[OLL.Length];
+        string[] form = new string[OLL.Length];
+        for (int i = 0; i < OLL.Length; i++)
+        {
+            string[] parts = OLL[i].Split('|');
+            names[i] = parts[0].Trim();
+            form[i] = parts[1].Trim();
+        }
+
+        return new object[] { names, form };
+    }
+    public string Spliter(string input , int index )
+    {
+        
+        string FormsIndex = OLL[index];
+
+        return FormsIndex;
+    }
+
+    private string[] OLL = {
+        "R U R' R U2' R'" /*Р РёР±РєР° 1 */,
+        "R U2' R' U' R U' R'" /*Р РёР±РєР° 2 */,
+        "R U2' R2' U' R2 U2' R' U2 R" /*Р“РІРёРЅС‚РѕРєСЂРёР» */,
+        "R U R2 U' R' F R U R U' F' " /*CРєРѕР±РєРё 1*/,
+        "y R' U' R' F R F' U R" /*РЎРєРѕР±РєРё 2 */,
+        "Rw U R' U' Rw' F R F'" /*Р’СѓС…Р°*/,
+        "R' F R U R' U' F'U R " /*РџСЂРѕРїРµР№Р»РµСЂ 1*/,
+        "y2 R U R' F' U' F U R U2 R'" /*РџСЂРѕРїРµР№Р»РµСЂ 2*/,
+        "РџРѕРІС–С‚СЂСЏРЅРёР№ Р·РјС–Р№ | Rw U R' U' Rw' R U R U' R'" /*РџРѕРІС–С‚СЂСЏРЅРёР№ Р·РјС–Р№*/,
+        "CРЅС–Р¶РёРЅРєР° | Rw' R U R U R' U' Rw R' M' U R U' Rw'" /*РЎРЅС–Р¶РёРЅРєР°*/,
+        "F R U R' U' F'" /*Р‘СѓРєРІР° Рў 1*/,
+        "R U R' U' R' F R F'" /*Р‘СѓРєРІР° Рў 2*/,
+        "РљСѓР»СЏ РІ РєРѕСЂРёРґРѕСЂС– | R U2' R2' F R F' U2' R' F R F'" /*РљСѓР»СЏ РІ РєРѕСЂРёС‚РѕРґС– 1*/,
+        "РљСѓР»СЏ РІ СЃС‚С–РЅСѓ Rw' U' Rw U2' R' U2' R U2' Rw' U Rw" /*РљСѓР»СЏ РІ СЃС‚С–РЅСѓ 2*/,
+        "Р”РѕРјС–РЅРѕ | R U R' U R' F R F' U2' R' F R F'" /*Р”РѕРјС–РЅРѕ */,
+        "РљРѕРјР° Р· С‚РѕС‡РєРѕСЋ | Rw' R2 U R' U Rw U2' Rw' U R' Rw" /*РљРѕРјР° Р· С‚РѕС‡РєРѕСЋ */,
+        "РљРѕРјР° Р· Р±Р»РѕРєРѕРј | Rw' R U' Rw U2 Rw' U' R U' R2 Rw" /*РљРѕРјР° Р· Р±Р»РѕРєРѕРј */,
+        "R2 D R' U2' R D' R' U2' R'" /*РћС‡С–*/,
+        "РњС–РєРєС– РњР°СѓСЃ СЃ Р±Р°РєРµРЅР±Р°СЂРґР°РјРё | Rw' R U R U R' U' Rw R2 F R F'" /*РњС–РєРєС– РњР°СѓСЃ Р· Р±Р°РєРµРЅР±Р°СЂРґР°РјРё */,
+        "РњС–РєРєС– РњР°СѓСЃ СЃ Р±РѕСЂРѕРґРѕСЋ | Rw U R' U R U2 Rw2 U' R U' R' U2 Rw" /*РњС–РєРєС– РњР°СѓСЃ Р· Р±РѕСЂРѕРґРѕСЋ */,
+        "R U2 R' U' R U R' U' R U' R'" /*РџРѕРґРІС–Р№РЅС– РѕС‡С–*/,
+        "F U R U' R' U R U' R' F'" /*РџР°Р»РёС†СЏ 1*/,
+        "R' F R U R U' R2 F' R2 U' R' U R U R'" /*РџР°Р»РёС†СЏ 2*/,
+        "Rw' U' Rw U' R' U R U' R' U R Rw' U Rw" /*РџР°Р»РёС†СЏ 3*/,
+        "y' R' F' U' F U' R U R' U R" /*РџР°Р»РёС†СЏ 4*/,
+        "F' Rw U R' U' Rw' F R " /*Р’С–СЃСЊРјС–СЂРєР°*/,
+        "Р’РµСЂС‚РѕР»С–С‚РЅРёР№ РјР°Р№РґР°РЅС‡РёРє | R U R' U' M'U R U' Rw'" /*РІРµСЂС‚РѕР»С–С‚РЅРёР№ РјР°Р№РґР°РЅС‡РёРє*/,
+        "Rw U Rw' R U R' U' Rw U'" /*Р‘СѓРєРІР° Р“ 1*/,
+        "y2 F U R U' R2 F' R U R U' R'" /*Р‘СѓРєРІР° Р“ 2*/,
+        "y2 Rw' U' Rw R' U' R U Rw' U Rw" /*Р‘СѓРєРІР° Р“ 3*/,
+        "Rw' U Rw U Rw' U' Rw B U' B'" /*Р‘СѓРєРІР° Р“ 4*/,
+        "Rw U2 R' U' R U' Rw'" /*РљРІР°РґСЂР°С‚ 1*/,
+        "y2 Rw' U2 R U R' U Rw" /*РљРІР°РґСЂР°С‚ 2*/,
+        "y2 R U2' R2 F R F' R U2' R'" /*РљСЂР°РІР°С‚РєР° 1*/,
+        "F R U' R' U' R U R' F'" /*РљСЂР°РІР°С‚РєР° 2*/,
+        "R U R' U R U' R'U' R' F R F'" /*Р‘СѓРєРІР° Рњ 1*/,
+        "L' U' L U' L'U L U Rw U' Rw' F" /*Р‘СѓРєРІР° M 2*/,
+        "R U R' U' R' F R2 U R' U' F" /*Р СЋРјРєР° 1*/,
+        "y2 R U R' U R' F R F' R U2' R'" /*Р СЋРјРєР° 2*/,
+        "Р›С–РІР° Р±Р»РёР·РєР°РІРєР° Р· Р±Р»РѕРєРѕРј | Rw U R'U R U2 Rw'" /*Р›С–РІР° Р±Р»РёР·РєР°РІРєР° Р· Р±Р»РѕРєРѕРј*/,
+        "РџСЂР°РІР° Р‘Р»РёР·РєР°РІРєР° Р· Р±Р»РѕРєРѕРј | R U2 R' U2 R'F R F'" /*РџСЂР°РІР° Р‘Р»РёР·РєР°РІРєР° Р· Р±Р»РѕРєРѕРј*/,
+        "y R' U' F' U F R" /*Рњ'СЏРєРёР№ Р·РЅР°Рє 1 */,
+        "y2 R'U' F U R U' R' F' R" /*Рњ'СЏРєРёР№ Р·РЅР°Рє 2*/,
+        "y2 F U R U' R' F'" /*Рњ'СЏРєРёР№ Р·РЅР°Рє 3*/,
+        "R U B' U' R' U R B R'" /*Рњ'СЏРєРёР№ Р·РЅР°Рє 4*/,
+        "y2 R U R' U R U2 R' F R U R' U' F'" /*РџС–РІРµРЅСЊ 1*/,
+        "y2 F R' F R2 U' R' U' R U R' F2" /*РџС–РІРµРЅСЊ 2*/,
+        "R' U' R U'R' U2 R F R U R' U' F'" /*РџС–РІРµРЅСЊ 3*/,
+        "y R U R' U' R U' R' F' U' F R U R'" /*РџС–РІРµРЅСЊ 4*/,
+
+        "Р‘СѓРјРµСЂР°РЅРі 2-1 | F R U R' U' R U R' U' F'" /*Р‘СѓРјРµСЂР°РЅРі  2-1 */,
+
+        "Р‘СѓРјРµСЂР°РЅРі 3-2 | Rw U' Rw2 U Rw2 U Rw2 U' Rw" /*Р‘СѓРјРµСЂР°РЅРі 3-2 */,
+
+        "Р‘СѓРјРµСЂР°РЅРі 2-3 |  Rw' U Rw2 U' Rw2 U' Rw2 U Rw'" /*РџС–Рґ СЃС…РѕРґРёРЅРєРё 3*/,
+
+        "Р‘СѓРјРµСЂР°РЅРі 1-2 | F' L' U' L U L' U'L U F" /*Р‘СѓРјРµСЂР°РЅРі 1-2 */
+
     };
+    
 }
